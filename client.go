@@ -486,6 +486,11 @@ type providerResponse struct {
 func buildPayload(rec libdns.Record) providerPayload {
 	var payload providerPayload
 
+	// Total Uptime does not accept TTLs set to 0
+	if rec.TTL == 0 {
+		rec.TTL = 3600 * time.Second
+	}
+
 	switch rec.Type {
 	case "A":
 		payload.AHostName = rec.Name

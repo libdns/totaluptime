@@ -305,7 +305,7 @@ func TestSetRecords(t *testing.T) {
 			Type:  "TXT",
 			Name:  "test-TXT-domain",
 			Value: "test-TXT-value",
-			TTL:   3600 * time.Second,
+			// acme challenge does not provide a TTL
 		},
 	}
 
